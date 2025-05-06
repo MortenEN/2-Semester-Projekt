@@ -1,5 +1,7 @@
 package dataBase;
 
-public class WorkerDBIF {
+import model.Worker;
 
+public interface WorkerDBIF {
+	Worker findWorkerByWorker(String workerNumber);
 }
