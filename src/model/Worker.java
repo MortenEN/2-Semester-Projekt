@@ -13,7 +13,6 @@ public class Worker {
 
 	public Worker(String name, String address, String phoneNo, String email, String workerNumber, boolean atWork,
 			ArrayList<Shift> listOfShifts) {
-		super();
 		this.name = name;
 		this.address = address;
 		this.phoneNo = phoneNo;
@@ -23,6 +22,7 @@ public class Worker {
 		this.listOfShifts = listOfShifts;
 	}
 
+	
 	public void addShift(Shift s) {
 		listOfShifts.add(s);
 	}
