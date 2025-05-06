@@ -11,15 +11,14 @@ public class Worker {
 	private boolean atWork;
 	private ArrayList<Shift> listOfShifts;
 
-	public Worker(String name, String address, String phoneNo, String email, String workerNumber, boolean atWork,
-			ArrayList<Shift> listOfShifts) {
+	public Worker(String name, String address, String phoneNo, String email, String workerNumber) {
 		this.name = name;
 		this.address = address;
 		this.phoneNo = phoneNo;
 		this.email = email;
 		this.workerNumber = workerNumber;
-		this.atWork = atWork;
-		this.listOfShifts = listOfShifts;
+		atWork = false;
+		listOfShifts = new ArrayList<>();
 	}
 
 	
