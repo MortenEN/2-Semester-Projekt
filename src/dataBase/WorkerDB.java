@@ -4,7 +4,7 @@ import java.sql.*;
 
 import model.Worker;
 
-public class WorkerDB {
+public class WorkerDB implements WorkerDBIF {
 	private Connection con;
 	private static final String FIND_Worker_By_Worker_Number_SQL = "select * from worker where workernumber = ?";
 	private PreparedStatement findWorkerByWorkerNumber;
@@ -18,6 +18,7 @@ public class WorkerDB {
 		findCityFromWorker = con.prepareStatement(FIND_City_From_Worker);
 	}
 	
+	@Override
 	public Worker findWorkerByWorkerNumber(String workerNumber) throws SQLException {
 		Worker worker;
 		ResultSet rs;

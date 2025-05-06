@@ -1,7 +1,9 @@
 package dataBase;
 
+import java.sql.SQLException;
+
 import model.Worker;
 
 public interface WorkerDBIF {
-	Worker findWorkerByWorker(String workerNumber);
+	Worker findWorkerByWorkerNumber(String workerNumber) throws SQLException;
 }
