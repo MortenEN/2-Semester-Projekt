@@ -1,5 +1,5 @@
 package dataBase;
 
-public class ShiftDBIF {
+public interface ShiftDBIF {
 
 }
