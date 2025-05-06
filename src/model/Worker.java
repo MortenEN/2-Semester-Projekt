@@ -1,4 +1,5 @@
 package model;
+
 import java.util.ArrayList;
 
 public class Worker {
@@ -10,39 +11,56 @@ public class Worker {
 	private boolean atWork;
 	private ArrayList<Shift> listOfShifts;
 
+	public Worker(String name, String address, String phoneNo, String email, String workerNumber, boolean atWork,
+			ArrayList<Shift> listOfShifts) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phoneNo = phoneNo;
+		this.email = email;
+		this.workerNumber = workerNumber;
+		this.atWork = atWork;
+		this.listOfShifts = listOfShifts;
+	}
 
 	public void addShift(Shift s) {
 		listOfShifts.add(s);
 	}
 
-	//Getters
+	// Getters
 	public String getName() {
 		return name;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public String getPhoneNo() {
 		return phoneNo;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public String getWorkerNumber() {
 		return workerNumber;
 	}
+
 	public boolean isAtWork() {
 		return atWork;
 	}
+
 	public ArrayList<Shift> getListOfShifts() {
 		return listOfShifts;
 	}
 
-
-	//Setters
+	// Setters
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -62,6 +80,7 @@ public class Worker {
 	public void setAtWork(boolean atWork) {
 		this.atWork = atWork;
 	}
+
 	public void setListOfShifts(ArrayList<Shift> listOfShifts) {
 		this.listOfShifts = listOfShifts;
 	}
