@@ -28,28 +28,46 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
 
 public class loginWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static loginWindow frame;
 	private JPanel contentPane;
 	private WorkerCtr workerCtr;
 	private JList<String> listOfWorkers;
+	private static String login;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		login = "";
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					loginWindow frame = new loginWindow();
+					frame = new loginWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		
+		new Thread(() -> {
+			while(true) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// should not happen - we don't interrupt this thread
+					e.printStackTrace();
+				}
+				frame.updateWorkerList();
+			}
+		}).start();
 	}
 
 	/**
@@ -80,6 +98,12 @@ public class loginWindow extends JFrame {
 		panel.setLayout(gbl_panel);
 		
 		JButton btnNewButton_1num = new JButton("1");
+		btnNewButton_1num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_1num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_1num = new GridBagConstraints();
 		gbc_btnNewButton_1num.insets = new Insets(0, 0, 5, 5);
@@ -88,6 +112,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_1num, gbc_btnNewButton_1num);
 		
 		JButton btnNewButton_2num = new JButton("2");
+		btnNewButton_2num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_2num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_2num = new GridBagConstraints();
 		gbc_btnNewButton_2num.insets = new Insets(0, 0, 5, 5);
@@ -96,6 +126,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_2num, gbc_btnNewButton_2num);
 		
 		JButton btnNewButton_3num = new JButton("3");
+		btnNewButton_3num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_3num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_3num = new GridBagConstraints();
 		gbc_btnNewButton_3num.insets = new Insets(0, 0, 5, 0);
@@ -104,6 +140,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_3num, gbc_btnNewButton_3num);
 		
 		JButton btnNewButton_4num = new JButton("4");
+		btnNewButton_4num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_4num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_4num = new GridBagConstraints();
 		gbc_btnNewButton_4num.insets = new Insets(0, 0, 5, 5);
@@ -112,6 +154,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_4num, gbc_btnNewButton_4num);
 		
 		JButton btnNewButton_5num = new JButton("5");
+		btnNewButton_5num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_5num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_5num = new GridBagConstraints();
 		gbc_btnNewButton_5num.insets = new Insets(0, 0, 5, 5);
@@ -120,6 +168,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_5num, gbc_btnNewButton_5num);
 		
 		JButton btnNewButton_6num = new JButton("6");
+		btnNewButton_6num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_6num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_6num = new GridBagConstraints();
 		gbc_btnNewButton_6num.insets = new Insets(0, 0, 5, 0);
@@ -128,6 +182,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_6num, gbc_btnNewButton_6num);
 		
 		JButton btnNewButton_7num = new JButton("7");
+		btnNewButton_7num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_7num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_7num = new GridBagConstraints();
 		gbc_btnNewButton_7num.insets = new Insets(0, 0, 5, 5);
@@ -136,6 +196,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_7num, gbc_btnNewButton_7num);
 		
 		JButton btnNewButton_8num = new JButton("8");
+		btnNewButton_8num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_8num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_8num = new GridBagConstraints();
 		gbc_btnNewButton_8num.insets = new Insets(0, 0, 5, 5);
@@ -144,6 +210,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_8num, gbc_btnNewButton_8num);
 		
 		JButton btnNewButton_9num = new JButton("9");
+		btnNewButton_9num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_9num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_9num = new GridBagConstraints();
 		gbc_btnNewButton_9num.insets = new Insets(0, 0, 5, 0);
@@ -152,6 +224,12 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_9num, gbc_btnNewButton_9num);
 		
 		JButton btnNewButton_0num = new JButton("0");
+		btnNewButton_0num.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = e.getActionCommand();
+				login = login + s;
+			}
+		});
 		btnNewButton_0num.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_0num = new GridBagConstraints();
 		gbc_btnNewButton_0num.insets = new Insets(0, 0, 5, 5);
@@ -160,6 +238,18 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_0num, gbc_btnNewButton_0num);
 		
 		JButton btnNewButton_enter = new JButton("Enter");
+		btnNewButton_enter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					enterLogin(login);
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "Not found, try again");
+					e1.printStackTrace();
+				}
+				login = "";
+			}
+
+		});
 		btnNewButton_enter.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_btnNewButton_enter = new GridBagConstraints();
 		gbc_btnNewButton_enter.insets = new Insets(0, 0, 5, 0);
@@ -186,6 +276,10 @@ public class loginWindow extends JFrame {
 		}
 	}
 	
+	private void enterLogin(String login) throws SQLException {
+		workerCtr.findWorker(login);
+	}
+	
 	public void updateWorkerList() {
 		SwingUtilities.invokeLater(() -> {
 			List<Worker> workers;
@@ -193,12 +287,12 @@ public class loginWindow extends JFrame {
 				workers = workerCtr.findAll();
 				DefaultListModel<String> list = new DefaultListModel<>();
 				for (Worker w : workers) {
-					list.addElement(w.getName() + "(" + LocalDateTime.now() + ")");
+					list.addElement(w.getName() + "(Checked in)");
 				}
 				this.listOfWorkers.setModel(list);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Could not update list");
-				e.printStackTrace();
+				//JOptionPane.showMessageDialog(null, "No employees working at the moment");
+				//e.printStackTrace();
 			}
 			
 		});

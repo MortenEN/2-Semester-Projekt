@@ -11,13 +11,13 @@ public class Worker {
 	private boolean atWork;
 	private ArrayList<Shift> listOfShifts;
 
-	public Worker(String name, String address, String phoneNo, String email, String workerNumber) {
+	public Worker(String name, String address, String phoneNo, String email, String workerNumber, boolean atWork) {
 		this.name = name;
 		this.address = address;
 		this.phoneNo = phoneNo;
 		this.email = email;
 		this.workerNumber = workerNumber;
-		atWork = false;
+		this.atWork = atWork;
 		listOfShifts = new ArrayList<>();
 	}
 

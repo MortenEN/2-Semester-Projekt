@@ -21,7 +21,7 @@ private WorkerDBIF workerDB;
 		return worker;
 	}
 
-	public List<Worker> findAll() {
-		return null;
+	public List<Worker> findAll() throws SQLException {
+		return workerDB.findWorkersAtWork();
 	}
 }
