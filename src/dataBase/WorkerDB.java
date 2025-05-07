@@ -6,9 +6,9 @@ import model.Worker;
 
 public class WorkerDB implements WorkerDBIF {
 	private Connection con;
-	private static final String FIND_Worker_By_Worker_Number_SQL = "select * from worker where workernumber = ?";
+	private static final String FIND_Worker_By_Worker_Number_SQL = "select * from worker where workerid = ?";
 	private PreparedStatement findWorkerByWorkerNumber;
-	private static final String FIND_City_From_Worker = "select *\r\n"
+	private static final String FIND_City_From_Worker = "select *"
 			+ "from worker, city, country where worker.FK_city_ID = city.cityID and city.FK_country_ID = 1";
 	private Statement findCityFromWorker;
 	
