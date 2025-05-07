@@ -20,6 +20,7 @@ streetName nvarchar(40) not null,
 houseNumber int not null,
 FK_city_ID int not null,
 FK_post_ID int null,
+signedIn int not null,
 PRIMARY KEY (workerID),
 FOREIGN KEY (FK_city_ID) references City(cityID));
 
@@ -80,6 +81,9 @@ values ('Danmark')
 Insert into City(cityID, city, FK_country_ID)
 values (9000, 'Aalborg', 1)
 
-Insert into Worker(WorkerID, [name], phoneno, email, cpr, streetName, houseNumber, FK_city_ID, FK_post_ID)
-values ('050607', 'Mikkel Nielsen', '21786500', 'mikkel@gmail.com', '050607-5467', 'Gaden', 17, 9000, null)
+Insert into Worker(WorkerID, [name], phoneno, email, cpr, streetName, houseNumber, FK_city_ID, FK_post_ID, signedIn)
+values ('050607', 'Mikkel Nielsen', '21786500', 'mikkel@gmail.com', '050607-5467', 'Gaden', 17, 9000, null, 0)
+
+Insert into Worker(WorkerID, [name], phoneno, email, cpr, streetName, houseNumber, FK_city_ID, FK_post_ID, signedIn)
+values ('010203', 'Karsten Jensen', '04758936', 'karsten@gmail.com', '010203-1243', 'Gaden', 19, 9000, null, 0)
 

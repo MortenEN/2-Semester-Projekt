@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import dataBase.WorkerDB;
 import dataBase.WorkerDBIF;
@@ -18,5 +19,9 @@ private WorkerDBIF workerDB;
 		
 		worker = workerDB.findWorkerByWorkerNumber(workerNumber);
 		return worker;
+	}
+
+	public List<Worker> findAll() {
+		return null;
 	}
 }

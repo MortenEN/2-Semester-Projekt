@@ -5,21 +5,36 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.WorkerCtr;
+import model.Worker;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
 import java.awt.GridBagLayout;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.awt.Font;
 
 public class loginWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private WorkerCtr workerCtr;
+	private JList<String> listOfWorkers;
 
 	/**
 	 * Launch the application.
@@ -50,7 +65,7 @@ public class loginWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblDate = new JLabel("Date-");
+		JLabel lblDate = new JLabel("Date-" + LocalDate.now());
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblDate, BorderLayout.SOUTH);
@@ -155,8 +170,38 @@ public class loginWindow extends JFrame {
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		
-		JList listOfWorkers = new JList();
+		listOfWorkers = new JList<>();
 		panel_1.add(listOfWorkers);
+		
+		init();
+	}
+	
+	private void init() {
+		try {
+			workerCtr = new WorkerCtr();
+			updateWorkerList();
+		} catch (Exception e) {
+			JOptionPane.showConfirmDialog(null, e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateWorkerList() {
+		SwingUtilities.invokeLater(() -> {
+			List<Worker> workers;
+			try {
+				workers = workerCtr.findAll();
+				DefaultListModel<String> list = new DefaultListModel<>();
+				for (Worker w : workers) {
+					list.addElement(w.getName() + "(" + LocalDateTime.now() + ")");
+				}
+				this.listOfWorkers.setModel(list);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Could not update list");
+				e.printStackTrace();
+			}
+			
+		});
 	}
 
 }
