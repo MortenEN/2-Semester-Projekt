@@ -9,11 +9,11 @@ import model.Shift;
 
 public class ShiftCtr {
 	private ShiftDBIF shiftDB;
-	
+
 	public ShiftCtr() throws SQLException {
 		shiftDB = new ShiftDB();
 	}
-	
+
 	public Shift createShift(LocalDateTime now) {
 		Shift shift;
 		shift = shiftDB.createShiftObject(now);
