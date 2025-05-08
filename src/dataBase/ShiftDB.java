@@ -2,6 +2,7 @@ package dataBase;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import model.Shift;
 
@@ -9,26 +10,24 @@ public class ShiftDB implements ShiftDBIF {
 	private Connection con;
 	private Shift shift;
 	private static final String create_SQL =
-			"Insert into [Shift](start, end)"
-			+ "values (?, ?)";
+			"Insert into [Shift](start, [end], FK_worker_ID)"
+			+ "  values (?, ?, ?)";
 	private PreparedStatement create;
 	
 	public ShiftDB() throws SQLException {
+		con = DBConnection.getInstance().getConnection();
 		create = con.prepareStatement(create_SQL);
 	}
 
 	@Override
-	public void addShiftToDB(Shift shift) throws SQLException {
+	public void addShiftToDB(Shift shift, String workerNumber) throws SQLException {
 		LocalDateTime date = shift.getStart();
-		String stringDateStart = date.toString();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = date.format(formatter);
 		
-		//shift.setEnd(LocalDateTime.now()); FIND UD AF HVOR DET GIVER MENING
-		
-		LocalDateTime date1 = shift.getEnd();
-		String stringDateEnd = date1.toString();
-		
-		create.setString(1, stringDateStart);
-		create.setString(2, stringDateEnd);
+		create.setString(1, formattedDateTime);
+		create.setString(2, null);
+		create.setString(3, workerNumber);
 		
 		create.executeUpdate();
 	}

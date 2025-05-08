@@ -14,10 +14,15 @@ public class ShiftCtr {
 		shiftDB = new ShiftDB();
 	}
 
-	public Shift createShift(LocalDateTime now) {
+	public Shift createShiftObject(LocalDateTime now) {
 		Shift shift;
 		shift = shiftDB.createShiftObject(now);
 		return shift;
+	}
+	
+	public void addShiftToDB(LocalDateTime now, String workerNumber) throws SQLException {
+		Shift shift = createShiftObject(now);
+		shiftDB.addShiftToDB(shift, workerNumber);
 	}
 
 }

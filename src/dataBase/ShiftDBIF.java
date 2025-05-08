@@ -6,6 +6,6 @@ import java.time.LocalDateTime;
 import model.Shift;
 
 public interface ShiftDBIF {
-	void addShiftToDB(Shift shift) throws SQLException;
+	void addShiftToDB(Shift shift, String workerNumber) throws SQLException;
 	Shift createShiftObject(LocalDateTime now);
 }

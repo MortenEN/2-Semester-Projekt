@@ -6,7 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.ShiftCtr;
 import controller.WorkerCtr;
+import model.Shift;
 import model.Worker;
 
 import java.awt.BorderLayout;
@@ -38,6 +40,7 @@ public class loginWindow extends JFrame {
 	private static loginWindow frame;
 	private JPanel contentPane;
 	private WorkerCtr workerCtr;
+	private ShiftCtr shiftCtr;
 	private JList<String> listOfWorkers;
 	private static String login;
 
@@ -56,7 +59,7 @@ public class loginWindow extends JFrame {
 				}
 			}
 		});
-		
+
 		new Thread(() -> {
 			while(true) {
 				try {
@@ -82,12 +85,12 @@ public class loginWindow extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel lblDate = new JLabel("Date-" + LocalDate.now());
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblDate, BorderLayout.SOUTH);
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
@@ -96,7 +99,7 @@ public class loginWindow extends JFrame {
 		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
-		
+
 		JButton btnNewButton_1num = new JButton("1");
 		btnNewButton_1num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,7 +113,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_1num.gridx = 0;
 		gbc_btnNewButton_1num.gridy = 0;
 		panel.add(btnNewButton_1num, gbc_btnNewButton_1num);
-		
+
 		JButton btnNewButton_2num = new JButton("2");
 		btnNewButton_2num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +127,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_2num.gridx = 1;
 		gbc_btnNewButton_2num.gridy = 0;
 		panel.add(btnNewButton_2num, gbc_btnNewButton_2num);
-		
+
 		JButton btnNewButton_3num = new JButton("3");
 		btnNewButton_3num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -138,7 +141,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_3num.gridx = 2;
 		gbc_btnNewButton_3num.gridy = 0;
 		panel.add(btnNewButton_3num, gbc_btnNewButton_3num);
-		
+
 		JButton btnNewButton_4num = new JButton("4");
 		btnNewButton_4num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,7 +155,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_4num.gridx = 0;
 		gbc_btnNewButton_4num.gridy = 1;
 		panel.add(btnNewButton_4num, gbc_btnNewButton_4num);
-		
+
 		JButton btnNewButton_5num = new JButton("5");
 		btnNewButton_5num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -166,7 +169,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_5num.gridx = 1;
 		gbc_btnNewButton_5num.gridy = 1;
 		panel.add(btnNewButton_5num, gbc_btnNewButton_5num);
-		
+
 		JButton btnNewButton_6num = new JButton("6");
 		btnNewButton_6num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -180,7 +183,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_6num.gridx = 2;
 		gbc_btnNewButton_6num.gridy = 1;
 		panel.add(btnNewButton_6num, gbc_btnNewButton_6num);
-		
+
 		JButton btnNewButton_7num = new JButton("7");
 		btnNewButton_7num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +197,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_7num.gridx = 0;
 		gbc_btnNewButton_7num.gridy = 2;
 		panel.add(btnNewButton_7num, gbc_btnNewButton_7num);
-		
+
 		JButton btnNewButton_8num = new JButton("8");
 		btnNewButton_8num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -208,7 +211,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_8num.gridx = 1;
 		gbc_btnNewButton_8num.gridy = 2;
 		panel.add(btnNewButton_8num, gbc_btnNewButton_8num);
-		
+
 		JButton btnNewButton_9num = new JButton("9");
 		btnNewButton_9num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -222,7 +225,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_9num.gridx = 2;
 		gbc_btnNewButton_9num.gridy = 2;
 		panel.add(btnNewButton_9num, gbc_btnNewButton_9num);
-		
+
 		JButton btnNewButton_0num = new JButton("0");
 		btnNewButton_0num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -236,7 +239,7 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_0num.gridx = 1;
 		gbc_btnNewButton_0num.gridy = 3;
 		panel.add(btnNewButton_0num, gbc_btnNewButton_0num);
-		
+
 		JButton btnNewButton_enter = new JButton("Enter");
 		btnNewButton_enter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -256,30 +259,36 @@ public class loginWindow extends JFrame {
 		gbc_btnNewButton_enter.gridx = 2;
 		gbc_btnNewButton_enter.gridy = 3;
 		panel.add(btnNewButton_enter, gbc_btnNewButton_enter);
-		
+
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
-		
+
 		listOfWorkers = new JList<>();
 		panel_1.add(listOfWorkers);
-		
+
 		init();
 	}
-	
+
 	private void init() {
 		try {
 			workerCtr = new WorkerCtr();
+			shiftCtr = new ShiftCtr();
 			updateWorkerList();
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void enterLogin(String login) throws SQLException {
-		workerCtr.findWorker(login);
+		Worker worker = workerCtr.findWorker(login);
+		if(worker.isAtWork()) {
+			shiftCtr.addShiftToDB(LocalDateTime.now(), login);
+		} else {
+			System.out.println("Hej");
+		}
 	}
-	
+
 	public void updateWorkerList() {
 		SwingUtilities.invokeLater(() -> {
 			List<Worker> workers;
@@ -294,7 +303,7 @@ public class loginWindow extends JFrame {
 				//JOptionPane.showMessageDialog(null, "No employees working at the moment");
 				//e.printStackTrace();
 			}
-			
+
 		});
 	}
 

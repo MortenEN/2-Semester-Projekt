@@ -5,6 +5,7 @@ import java.util.List;
 
 import dataBase.WorkerDB;
 import dataBase.WorkerDBIF;
+import model.Shift;
 import model.Worker;
 
 public class WorkerCtr {

@@ -50,8 +50,8 @@ FOREIGN KEY (schedule_ID) references Schedule(scheduleID));
 CREATE TABLE [Shift]
 (ShiftID int identity(1,1) not null,
 [start] datetime not null,
-[end] datetime not null,
-FK_schedule_ID int not null,
+[end] datetime,
+FK_schedule_ID int,
 FK_worker_ID nvarchar(30) not null,
 PRIMARY KEY (shiftID),
 FOREIGN KEY (FK_schedule_ID) references Schedule(scheduleID),
