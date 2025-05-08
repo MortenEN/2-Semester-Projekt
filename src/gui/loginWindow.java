@@ -285,7 +285,8 @@ public class loginWindow extends JFrame {
 		if(worker.isAtWork()) {
 			shiftCtr.addShiftToDB(LocalDateTime.now(), login);
 		} else {
-			System.out.println("Hej");
+			String activeShiftStart = workerCtr.findActiveShift(login);
+			shiftCtr.updateShiftInDB(activeShiftStart, LocalDateTime.now(), login);
 		}
 	}
 
@@ -300,7 +301,6 @@ public class loginWindow extends JFrame {
 				}
 				this.listOfWorkers.setModel(list);
 			} catch (Exception e) {
-				//JOptionPane.showMessageDialog(null, "No employees working at the moment");
 				//e.printStackTrace();
 			}
 

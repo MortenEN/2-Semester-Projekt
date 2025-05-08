@@ -25,4 +25,8 @@ public class ShiftCtr {
 		shiftDB.addShiftToDB(shift, workerNumber);
 	}
 
+	public void updateShiftInDB(String start, LocalDateTime end, String workerNumber) throws SQLException {
+		shiftDB.updateShiftInDB(start, end, workerNumber);
+	}
+
 }

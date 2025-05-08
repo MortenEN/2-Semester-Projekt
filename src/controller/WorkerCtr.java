@@ -25,4 +25,9 @@ private WorkerDBIF workerDB;
 	public List<Worker> findAll() throws SQLException {
 		return workerDB.findWorkersAtWork();
 	}
+
+	public String findActiveShift(String login) throws SQLException {
+		String start = workerDB.findActiveShift(login);
+		return start;
+	}
 }

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Shift;
 import model.Worker;
 
 public class WorkerDB implements WorkerDBIF {
@@ -19,6 +20,11 @@ public class WorkerDB implements WorkerDBIF {
 	private PreparedStatement changeStatusOut;
 	private static final String FIND_All_Workers_At_Work_SQL = "select * from worker where signedIn = 1";
 	private PreparedStatement findAllWorkersAtWork;
+	private static final String FIND_Active_Shift_SQL = "SELECT * \r\n"
+			+ "FROM worker \r\n"
+			+ "JOIN shift ON worker.workerid = shift.FK_worker_ID \r\n"
+			+ "WHERE worker.workerid = ? and shift.[end] is null;";
+	private PreparedStatement findActiveShift;
 
 	public WorkerDB() throws SQLException {
 		con = DBConnection.getInstance().getConnection();
@@ -27,6 +33,7 @@ public class WorkerDB implements WorkerDBIF {
 		changeStatusOut = con.prepareStatement(Change_Work_Status_To_SignedOut_SQL);
 		findAllWorkersAtWork = con.prepareStatement(FIND_All_Workers_At_Work_SQL);
 		findCityFromWorker = con.createStatement();
+		findActiveShift = con.prepareStatement(FIND_Active_Shift_SQL);
 	}
 
 	@Override
@@ -70,6 +77,8 @@ public class WorkerDB implements WorkerDBIF {
 		} else {
 			atWork = true;
 		}
+		
+		
 
 		Worker foundWorker = new Worker(name, address, phoneNo, email, workerNumber, atWork);
 		return foundWorker;
@@ -102,6 +111,21 @@ public class WorkerDB implements WorkerDBIF {
 		ResultSet rs = findAllWorkersAtWork.executeQuery();
 		List<Worker> res = buildObjectList(rs);
 		return res;
+	}
+
+	@Override
+	public String findActiveShift(String login) throws SQLException {
+		String start = "";
+		ResultSet rs;
+		
+		findActiveShift.setString(1, login);
+		rs = findActiveShift.executeQuery();
+		
+		if(rs.next()) {
+			start = rs.getString("start");
+		}
+		
+		return start;
 	}
 
 }
