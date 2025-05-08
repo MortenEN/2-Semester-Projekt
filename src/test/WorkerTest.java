@@ -14,7 +14,7 @@ public class WorkerTest {
     @Test
     public void testCreateWorkerAndAddShift() {
         // Arrange
-        Worker worker = new Worker("Test Navn", "Testvej 1", "12345678", "test@mail.com", "W001", false);
+        Worker worker = new Worker("Mikkel Nielsen", "Gaden", "21786500", "mikkelnielsen@gmail.com", "010203", false);
         LocalDateTime start = LocalDateTime.of(2024, 5, 8, 8, 0);
         LocalDateTime end = LocalDateTime.of(2024, 5, 8, 16, 0);
         Shift shift = new Shift(start);
@@ -24,8 +24,8 @@ public class WorkerTest {
         worker.addShift(shift);
 
         // Assert
-        assertEquals("Test Navn", worker.getName());
-        assertEquals("W001", worker.getWorkerNumber());
+        assertEquals("Mikkel Nielsen", worker.getName());
+        assertEquals("010203", worker.getWorkerNumber());
         assertFalse(worker.isAtWork());
         assertEquals(1, worker.getListOfShifts().size());
         assertEquals(start, worker.getListOfShifts().get(0).getStart());
@@ -34,19 +34,19 @@ public class WorkerTest {
 
     @Test
     public void testSetAndGetWorkerAttributes() {
-        Worker worker = new Worker("A", "B", "C", "D", "E", true);
-        worker.setName("Test Name");
-        worker.setAddress("New Street");
-        worker.setPhoneNo("88888888");
-        worker.setEmail("new@mail.com");
-        worker.setWorkerNumber("W999");
+        Worker worker = new Worker("Name", "Street", "Phone Number", "E-mail", "Worker Number", true);
+        worker.setName("Mikkel Nielsen");
+        worker.setAddress("Gaden");
+        worker.setPhoneNo("21786500");
+        worker.setEmail("mikkelnielsen@gmail.com");
+        worker.setWorkerNumber("010203");
         worker.setAtWork(false);
 
-        assertEquals("Test Name", worker.getName());
-        assertEquals("New Street", worker.getAddress());
-        assertEquals("88888888", worker.getPhoneNo());
-        assertEquals("new@mail.com", worker.getEmail());
-        assertEquals("W999", worker.getWorkerNumber());
+        assertEquals("Mikkel Nielsen", worker.getName());
+        assertEquals("Gaden", worker.getAddress());
+        assertEquals("21786500", worker.getPhoneNo());
+        assertEquals("mikkelnielsen@gmail.com", worker.getEmail());
+        assertEquals("010203", worker.getWorkerNumber());
         assertFalse(worker.isAtWork());
     }
 }
