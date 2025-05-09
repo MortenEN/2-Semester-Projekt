@@ -10,6 +10,7 @@ public class Worker {
 	private String workerNumber;
 	private boolean atWork;
 	private ArrayList<Shift> listOfShifts;
+	//HUSK CPR
 
 	public Worker(String name, String address, String phoneNo, String email, String workerNumber, boolean atWork) {
 		this.name = name;

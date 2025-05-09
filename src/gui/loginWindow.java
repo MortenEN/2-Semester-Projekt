@@ -28,6 +28,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -43,6 +44,7 @@ public class loginWindow extends JFrame {
 	private ShiftCtr shiftCtr;
 	private JList<String> listOfWorkers;
 	private static String login;
+	private JLabel lblDate;
 
 	/**
 	 * Launch the application.
@@ -63,7 +65,7 @@ public class loginWindow extends JFrame {
 		new Thread(() -> {
 			while(true) {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// should not happen - we don't interrupt this thread
 					e.printStackTrace();
@@ -85,8 +87,7 @@ public class loginWindow extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-
-		JLabel lblDate = new JLabel("Date-" + LocalDate.now());
+		lblDate = new JLabel("Date-");
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblDate, BorderLayout.SOUTH);
@@ -291,6 +292,11 @@ public class loginWindow extends JFrame {
 	}
 
 	public void updateWorkerList() {
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-uuuu HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+		lblDate.setText("Date: " + formattedDateTime);
+	
 		SwingUtilities.invokeLater(() -> {
 			List<Worker> workers;
 			try {
