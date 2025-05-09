@@ -315,9 +315,9 @@ public class loginWindow extends JFrame {
 	public void updateWorkerList() {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-uuuu HH:mm:ss");
-        String formattedDateTime = now.format(formatter);
+		String formattedDateTime = now.format(formatter);
 		lblDate.setText("Date: " + formattedDateTime);
-	
+
 		SwingUtilities.invokeLater(() -> {
 			List<Worker> workers;
 			try {
