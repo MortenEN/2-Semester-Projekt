@@ -68,6 +68,7 @@ public class WorkerDB implements WorkerDBIF {
 		String address = streetName + " " + houseNumber + ", " + cityCountry;
 
 		String phoneNo = rs.getString("phoneNo");
+		String cpr = rs.getString("cpr");
 		String email = rs.getString("email");
 		String workerNumber = rs.getString("workerId");
 		int atWorkInt = rs.getInt("signedIn");
@@ -80,7 +81,7 @@ public class WorkerDB implements WorkerDBIF {
 		
 		
 
-		Worker foundWorker = new Worker(name, address, phoneNo, email, workerNumber, atWork);
+		Worker foundWorker = new Worker(name, address, phoneNo, cpr, email, workerNumber, atWork);
 		return foundWorker;
 	}
 

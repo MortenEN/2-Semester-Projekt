@@ -6,22 +6,23 @@ public class Worker {
 	private String name;
 	private String address;
 	private String phoneNo;
+	private String cpr;
 	private String email;
 	private String workerNumber;
 	private boolean atWork;
 	private ArrayList<Shift> listOfShifts;
 	//HUSK CPR
 
-	public Worker(String name, String address, String phoneNo, String email, String workerNumber, boolean atWork) {
+	public Worker(String name, String address, String phoneNo, String cpr, String email, String workerNumber, boolean atWork) {
 		this.name = name;
 		this.address = address;
 		this.phoneNo = phoneNo;
+		this.setCpr(cpr);
 		this.email = email;
 		this.workerNumber = workerNumber;
 		this.atWork = atWork;
 		listOfShifts = new ArrayList<>();
 	}
-
 	
 	public void addShift(Shift s) {
 		listOfShifts.add(s);
@@ -85,4 +86,11 @@ public class Worker {
 		this.listOfShifts = listOfShifts;
 	}
 
+	public String getCpr() {
+		return cpr;
+	}
+
+	public void setCpr(String cpr) {
+		this.cpr = cpr;
+	}
 }
