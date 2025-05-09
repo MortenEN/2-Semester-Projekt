@@ -34,6 +34,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class loginWindow extends JFrame {
 
@@ -63,6 +64,11 @@ public class loginWindow extends JFrame {
 		});
 
 		new Thread(() -> {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				//e.printStackTrace();
+			}
 			while(true) {
 				try {
 					Thread.sleep(1000);
@@ -79,6 +85,7 @@ public class loginWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public loginWindow() {
+		setBackground(new Color(254, 254, 254));
 		setTitle("SignIn");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -93,6 +100,7 @@ public class loginWindow extends JFrame {
 		contentPane.add(lblDate, BorderLayout.SOUTH);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(245, 245, 245));
 		contentPane.add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{142, 142, 142, 0};
@@ -102,6 +110,7 @@ public class loginWindow extends JFrame {
 		panel.setLayout(gbl_panel);
 
 		JButton btnNewButton_1num = new JButton("1");
+		btnNewButton_1num.setBackground(new Color(211, 211, 211));
 		btnNewButton_1num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -116,6 +125,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_1num, gbc_btnNewButton_1num);
 
 		JButton btnNewButton_2num = new JButton("2");
+		btnNewButton_2num.setBackground(new Color(211, 211, 211));
 		btnNewButton_2num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -130,6 +140,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_2num, gbc_btnNewButton_2num);
 
 		JButton btnNewButton_3num = new JButton("3");
+		btnNewButton_3num.setBackground(new Color(211, 211, 211));
 		btnNewButton_3num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -144,6 +155,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_3num, gbc_btnNewButton_3num);
 
 		JButton btnNewButton_4num = new JButton("4");
+		btnNewButton_4num.setBackground(new Color(211, 211, 211));
 		btnNewButton_4num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -158,6 +170,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_4num, gbc_btnNewButton_4num);
 
 		JButton btnNewButton_5num = new JButton("5");
+		btnNewButton_5num.setBackground(new Color(211, 211, 211));
 		btnNewButton_5num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -172,6 +185,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_5num, gbc_btnNewButton_5num);
 
 		JButton btnNewButton_6num = new JButton("6");
+		btnNewButton_6num.setBackground(new Color(211, 211, 211));
 		btnNewButton_6num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -186,6 +200,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_6num, gbc_btnNewButton_6num);
 
 		JButton btnNewButton_7num = new JButton("7");
+		btnNewButton_7num.setBackground(new Color(211, 211, 211));
 		btnNewButton_7num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -200,6 +215,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_7num, gbc_btnNewButton_7num);
 
 		JButton btnNewButton_8num = new JButton("8");
+		btnNewButton_8num.setBackground(new Color(211, 211, 211));
 		btnNewButton_8num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -214,6 +230,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_8num, gbc_btnNewButton_8num);
 
 		JButton btnNewButton_9num = new JButton("9");
+		btnNewButton_9num.setBackground(new Color(211, 211, 211));
 		btnNewButton_9num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -228,6 +245,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_9num, gbc_btnNewButton_9num);
 
 		JButton btnNewButton_0num = new JButton("0");
+		btnNewButton_0num.setBackground(new Color(211, 211, 211));
 		btnNewButton_0num.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = e.getActionCommand();
@@ -242,6 +260,7 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_0num, gbc_btnNewButton_0num);
 
 		JButton btnNewButton_enter = new JButton("Enter");
+		btnNewButton_enter.setBackground(new Color(211, 211, 211));
 		btnNewButton_enter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -262,9 +281,11 @@ public class loginWindow extends JFrame {
 		panel.add(btnNewButton_enter, gbc_btnNewButton_enter);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(173, 173, 173));
 		contentPane.add(panel_1, BorderLayout.CENTER);
 
 		listOfWorkers = new JList<>();
+		listOfWorkers.setBackground(new Color(173, 173, 173));
 		panel_1.add(listOfWorkers);
 
 		init();
