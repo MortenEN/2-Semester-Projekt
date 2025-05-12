@@ -320,11 +320,14 @@ public class loginWindow extends JFrame {
 
 		SwingUtilities.invokeLater(() -> {
 			List<Worker> workers;
+			String s = "";
 			try {
 				workers = workerCtr.findAll();
 				DefaultListModel<String> list = new DefaultListModel<>();
 				for (Worker w : workers) {
-					list.addElement(w.getName() + "(Checked in)");
+					s = w.getName() + "(Checked in)\r\n" + "Hour count last month: " + getHoursForLastMonth(w);
+					System.out.println(s);
+					list.addElement(s);
 				}
 				this.listOfWorkers.setModel(list);
 			} catch (Exception e) {
@@ -332,6 +335,13 @@ public class loginWindow extends JFrame {
 			}
 
 		});
+	}
+
+	private String getHoursForLastMonth(Worker worker) throws SQLException {
+		shiftCtr.addShiftsToWorker(worker);
+		String hours = "";
+		hours = workerCtr.getHoursForLastMonth(worker);
+		return hours;
 	}
 
 }

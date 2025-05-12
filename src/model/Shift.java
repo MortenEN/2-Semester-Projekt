@@ -6,8 +6,9 @@ public class Shift {
 	private LocalDateTime start;
 	private LocalDateTime end;
 	
-	public Shift(LocalDateTime start) {
+	public Shift(LocalDateTime start, LocalDateTime end) {
 		this.start = start;
+		this.end = end;
 	}
 
 	public LocalDateTime getStart() {

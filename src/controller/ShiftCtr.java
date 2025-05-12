@@ -2,10 +2,12 @@ package controller;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import dataBase.ShiftDB;
 import dataBase.ShiftDBIF;
 import model.Shift;
+import model.Worker;
 
 public class ShiftCtr {
 	private ShiftDBIF shiftDB;
@@ -14,10 +16,15 @@ public class ShiftCtr {
 		shiftDB = new ShiftDB();
 	}
 
-	public Shift createShiftObject(LocalDateTime now) {
-		Shift shift;
-		shift = shiftDB.createShiftObject(now);
-		return shift;
+	public List<Shift> findShiftsByWorker(String workerNumber) throws SQLException {
+		return shiftDB.createShiftsObject(workerNumber);
+	}
+	
+	public void addShiftsToWorker(Worker worker) throws SQLException {
+		List<Shift> res = findShiftsByWorker(worker.getWorkerNumber());
+		for(int i = 0; i < res.size(); i++) {
+			worker.addShift(res.get(i));
+		}
 	}
 	
 	public void addShiftToDB(LocalDateTime now, String workerNumber) throws SQLException {
