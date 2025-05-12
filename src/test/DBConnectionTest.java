@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
 
 import dataBase.DBConnection;
 
@@ -25,5 +26,11 @@ public class DBConnectionTest {
 		con = DBConnection.getInstance();
 		boolean connectionIsOpen = DBConnection.getOpenStatus();
 		assertTrue(connectionIsOpen);	
+	}
+	
+	
+	@AfterAll
+	public static void cleanUp() {
+		con.disconnect();
 	}
 }
