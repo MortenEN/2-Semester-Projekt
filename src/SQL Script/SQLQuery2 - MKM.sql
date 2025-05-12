@@ -19,7 +19,6 @@ cpr nvarchar(15) not null,
 streetName nvarchar(40) not null,
 houseNumber int not null,
 FK_city_ID int not null,
-FK_post_ID int null,
 signedIn int not null,
 PRIMARY KEY (workerID),
 FOREIGN KEY (FK_city_ID) references City(cityID));
@@ -43,6 +42,7 @@ PRIMARY KEY (scheduleID));
 CREATE TABLE WorkerSchedule
 (worker_ID nvarchar(30) not null,
 schedule_ID int not null,
+created_By nvarchar(50) not null,
 PRIMARY KEY (worker_ID, schedule_ID),
 FOREIGN KEY (worker_ID) references Worker(workerID),
 FOREIGN KEY (schedule_ID) references Schedule(scheduleID));
@@ -62,12 +62,15 @@ CREATE TABLE Post
 [date] datetime not null,
 [text] nvarchar(200) not null,
 FK_shift_ID int not null,
+FK_worker_ID nvarchar(30) not null,
 PRIMARY KEY (postID),
+FOREIGN KEY (FK_worker_ID) references Worker(workerID),
 FOREIGN KEY (FK_shift_ID) references [Shift](shiftID));
 
 CREATE TABLE Bulletin
 (BulletinID int identity(1,1) not null,
 [date] datetime not null,
+name nvarchar(30) not null,
 FK_post_ID int not null
 PRIMARY KEY (bulletinID)
 FOREIGN KEY (FK_post_ID) references Post(postID));
