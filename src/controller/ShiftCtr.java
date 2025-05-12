@@ -21,8 +21,7 @@ public class ShiftCtr {
 	}
 	
 	public void addShiftToDB(LocalDateTime now, String workerNumber) throws SQLException {
-		Shift shift = createShiftObject(now);
-		shiftDB.addShiftToDB(shift, workerNumber);
+		shiftDB.addShiftToDB(now, workerNumber);
 	}
 
 	public void updateShiftInDB(String start, LocalDateTime end, String workerNumber) throws SQLException {

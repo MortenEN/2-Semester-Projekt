@@ -24,10 +24,9 @@ public class ShiftDB implements ShiftDBIF {
 	}
 
 	@Override
-	public void addShiftToDB(Shift shift, String workerNumber) throws SQLException {
-		LocalDateTime date = shift.getStart();
+	public void addShiftToDB(LocalDateTime now, String workerNumber) throws SQLException {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = date.format(formatter);
+        String formattedDateTime = now.format(formatter);
 		
 		create.setString(1, formattedDateTime);
 		create.setString(2, null);
