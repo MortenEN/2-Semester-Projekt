@@ -63,10 +63,15 @@ public class ShiftDB implements ShiftDBIF {
 
 	private Shift buildObject(ResultSet rs) throws SQLException {
 		String startString = rs.getString("start");
+		startString = startString.split("\\.")[0];
 		LocalDateTime start = LocalDateTime.parse(startString, formatter);
 		
 		String endString = rs.getString("end");
-		LocalDateTime end = LocalDateTime.parse(endString, formatter);
+		LocalDateTime end = null;
+		if(endString != null) {
+		endString = endString.split("\\.")[0];
+		end = LocalDateTime.parse(endString, formatter);
+		}
 		
 		Shift foundShift = new Shift(start, end);
 		return foundShift;

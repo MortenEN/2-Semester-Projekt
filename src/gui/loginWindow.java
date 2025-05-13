@@ -325,13 +325,12 @@ public class loginWindow extends JFrame {
 				workers = workerCtr.findAll();
 				DefaultListModel<String> list = new DefaultListModel<>();
 				for (Worker w : workers) {
-					s = w.getName() + "(Checked in)\r\n" + "Hour count last month: " + getHoursForLastMonth(w);
-					System.out.println(s);
+					s = w.getName() + "(Checked in)" + " Hour count last month: " + getHoursForLastMonth(w);
 					list.addElement(s);
 				}
 				this.listOfWorkers.setModel(list);
 			} catch (Exception e) {
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 
 		});

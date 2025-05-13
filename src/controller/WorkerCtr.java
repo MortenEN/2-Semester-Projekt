@@ -37,10 +37,11 @@ public class WorkerCtr {
 		List<Shift> res = worker.getListOfShifts();
 
 		for (Shift shift : res) {
+			if(shift.getEnd() != null){
 			Duration workHours = Duration.between(shift.getStart(), shift.getEnd());
 			totalHours = totalHours.plus(workHours);
+			}
 		}
-
 		return String.format("%d timer og %d minutter", 
 				totalHours.toHours(), 
 				totalHours.toMinutes() % 60);
