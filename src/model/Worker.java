@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Worker {
 	private String name;
@@ -10,7 +11,7 @@ public class Worker {
 	private String email;
 	private String workerNumber;
 	private boolean atWork;
-	private ArrayList<Shift> listOfShifts;
+	private List<Shift> listOfShifts;
 	//HUSK CPR
 
 	public Worker(String name, String address, String phoneNo, String cpr, String email, String workerNumber, boolean atWork) {
@@ -57,7 +58,7 @@ public class Worker {
 		return atWork;
 	}
 
-	public ArrayList<Shift> getListOfShifts() {
+	public List<Shift> getListOfShifts() {
 		return listOfShifts;
 	}
 
