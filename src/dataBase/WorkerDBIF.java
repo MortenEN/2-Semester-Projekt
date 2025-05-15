@@ -10,4 +10,5 @@ public interface WorkerDBIF {
 	Worker findWorkerByWorkerNumber(String workerNumber) throws SQLException;
 	List<Worker> findWorkersAtWork() throws SQLException;
 	String findActiveShift(String login) throws SQLException;
+	Worker findWorkerByName(String name) throws SQLException;
 }

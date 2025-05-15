@@ -303,7 +303,7 @@ public class loginWindow extends JFrame {
 	}
 
 	private void enterLogin(String login) throws SQLException {
-		Worker worker = workerCtr.findWorker(login);
+		Worker worker = workerCtr.findWorkerByWorkerNumber(login);
 		if(worker.isAtWork()) {
 			shiftCtr.addShiftToDB(LocalDateTime.now(), login);
 		} else {

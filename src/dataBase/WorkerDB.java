@@ -129,4 +129,10 @@ public class WorkerDB implements WorkerDBIF {
 		return start;
 	}
 
+	@Override
+	public Worker findWorkerByName(String name) throws SQLException {
+		
+		return null;
+	}
+
 }
