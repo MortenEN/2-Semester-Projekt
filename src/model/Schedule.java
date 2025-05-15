@@ -18,8 +18,8 @@ public class Schedule {
 		this.listOfShifts = new ArrayList<>();
 	}
 
-	public void addWokerToShift(Worker w){
-
+	public void addShiftToSchedule(Shift s){
+		listOfShifts.add(s);
 	}
 
 	//Setters

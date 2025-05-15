@@ -103,7 +103,8 @@ public class StartWindow extends JFrame {
 		JButton btnEnterMakeSchedule = new JButton("Open window");
 		btnEnterMakeSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showInternalMessageDialog(null, "Use Case not made yet");
+				ScheduleWindow scheduleWindow = new ScheduleWindow();
+				scheduleWindow.setVisible(true);
 			}
 		});
 		btnEnterMakeSchedule.setFont(new Font("Tahoma", Font.PLAIN, 16));

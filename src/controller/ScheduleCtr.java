@@ -16,7 +16,6 @@ public class ScheduleCtr {
 	private ShiftCtr shiftCtr;
 	private WorkerCtr workerCtr;
 	private WorkerDBIF workerDB;
-	private Schedule schedule;
 	
 	public ScheduleCtr() throws SQLException {
 		this.scheduleDB = new ScheduleDB();
@@ -43,7 +42,7 @@ public class ScheduleCtr {
 		shift.setWorker(worker);
 	}
 	
-	public void saveSchedule() throws SQLException {
+	public void saveSchedule(Schedule schedule) throws SQLException {
 		if(schedule == null) {
 			throw new IllegalStateException("No schedule to save");
 		}
