@@ -12,6 +12,7 @@ public interface ScheduleDBIF {
 	void setShift(Shift shift);
 	void addWorkerToShift(Worker worker);
 	void saveSchedule(Schedule schedule);
+	void updateSchedule(Schedule schedule);
 
 }
 
