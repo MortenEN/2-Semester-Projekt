@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ScheduleDB implements ScheduleDBIF{
 		con = DBConnection.getInstance().getConnection();
 		create = con.prepareStatement(create_SQL);
 		update = con.prepareStatement(update_SQL);
-		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	}
 
 	@Override
@@ -41,7 +40,7 @@ public class ScheduleDB implements ScheduleDBIF{
 	}
 
 	@Override
-	public void updateScheduleInDB(String start, LocalDateTime end, String name) throws SQLException {
+	public void updateScheduleInDB(String start, LocalDate end, String name) throws SQLException {
 		// TODO Auto-generated method stub
 
 	}
