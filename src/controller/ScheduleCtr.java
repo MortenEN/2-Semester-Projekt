@@ -16,10 +16,13 @@ public class ScheduleCtr {
 		
 	}
 	
-	public void findWorkerByName(String name) throws SQLException {
+	public Worker findWorkerByName(String name) throws SQLException {
 		Worker worker;
 		
-		//worker = workerDB.findWorkerByName(name);
+		worker = workerDB.findWorkerByName(name);
+		return worker;
 	}
+	
+	
 
 }
