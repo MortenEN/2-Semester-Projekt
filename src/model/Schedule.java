@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule {
@@ -9,12 +10,12 @@ public class Schedule {
 	private String name;
 	private List<Shift> listOfShifts;
 	
-	public Schedule(LocalDate start, LocalDate end, String name, List<Shift> listOfShifts) {
+	public Schedule(LocalDate start, LocalDate end, String name) {
 		super();
 		this.start = start;
 		this.end = end;
 		this.name = name;
-		this.listOfShifts = listOfShifts;
+		this.listOfShifts = new ArrayList<>();
 	}
 
 	public void addWokerToShift(Worker w){

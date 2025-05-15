@@ -31,7 +31,7 @@ public class ScheduleDB implements ScheduleDBIF{
 		update = con.prepareStatement(update_SQL);
 
 	}
-	public Schedule buildObject(ResultSet rs) {
+	public Schedule buildObject(ResultSet rs) throws SQLException {
 		String startString = rs.getString("start");
 		LocalDate start = LocalDate.parse(startString, formatter);
 
