@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import dataBase.ScheduleDBIF;
 import dataBase.WorkerDBIF;
+import model.Shift;
 import model.Worker;
 
 public class ScheduleCtr {
@@ -23,6 +24,13 @@ public class ScheduleCtr {
 		return worker;
 	}
 	
+	public void addWorkerToShift(Worker worker, Shift shift) throws SQLException {
+		shift.setWorker(worker);
+	}
+	
+	public void saveSchedule() {
+		
+	}
 	
 
 }

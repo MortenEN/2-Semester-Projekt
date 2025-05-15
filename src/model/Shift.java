@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public class Shift {
 	private LocalDateTime start;
 	private LocalDateTime end;
+	private Worker worker;
 	private boolean pastOrFutureShift; //True means in the past and false mean in the future
 	
 	public Shift(LocalDateTime start, LocalDateTime end, boolean pastOrFutureShift) {
@@ -27,6 +28,14 @@ public class Shift {
 
 	public void setEnd(LocalDateTime end) {
 		this.end = end;
+	}
+	
+	public Worker getWorker() {
+		return worker;
+	}
+	
+	public void setWorker(Worker worker) {
+		this.worker = worker;
 	}
 	
 	public boolean getPastOrFutureShift() {
