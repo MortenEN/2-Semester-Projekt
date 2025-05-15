@@ -2,15 +2,19 @@ package dataBase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import model.Schedule;
+import model.Shift;
+import model.Worker;
 
 public class ScheduleDB implements ScheduleDBIF{
 	private Connection con;
+	private Schedule schedule;
 	private DateTimeFormatter formatter;
 
 
@@ -26,23 +30,34 @@ public class ScheduleDB implements ScheduleDBIF{
 		update = con.prepareStatement(update_SQL);
 		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	}
-
-	@Override
-	public void addScheduleToDB(LocalDate start, LocalDate end, String name) throws SQLException {
-		// TODO Auto-generated method stub
-
+	public Schedule buildObject(ResultSet rs) {
+		rs=null;
+		
+		return rs;
 	}
 
 	@Override
-	public List<Schedule> createScheduleObject(String workerNumber) throws SQLException {
+	public void createScheduleObject(LocalDate start, LocalDate end, String name) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public void updateScheduleInDB(String start, LocalDate end, String name) throws SQLException {
+	public void setShift(Shift shift) {
 		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void addWorkerToShift(Worker worker) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveSchedule(Schedule schedule) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
