@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.ArrayList;
 
 import model.Schedule;
 import model.Shift;
@@ -28,10 +29,23 @@ public class ScheduleDB implements ScheduleDBIF{
 		con = DBConnection.getInstance().getConnection();
 		create = con.prepareStatement(create_SQL);
 		update = con.prepareStatement(update_SQL);
+		getName
 		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	}
 	public Schedule buildObject(ResultSet rs) {
-		rs=null;
+		String startString = rs.getString("start");
+		startString = startString.split("\\.")[0];
+		LocalDate start = LocalDate.parse(startString, formatter);
+		
+		String endString = rs.getString("end");
+		LocalDate end = null;
+		if(endString != null) {
+		endString = endString.split("\\.")[0];
+		end = LocalDate.parse(endString, formatter);
+		}
+		
+		
+		
 		
 		return rs;
 	}

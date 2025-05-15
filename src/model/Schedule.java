@@ -1,11 +1,13 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Schedule {
 	private LocalDateTime start;
 	private LocalDateTime end;
 	private String name;
+	private List<Shift> listOfShift;
 	
 	
 	public void setStart(LocalDateTime start) {
@@ -33,4 +35,15 @@ public class Schedule {
 		return name;
 	}
 
+	public List<Shift> getListOfShift() {
+		return listOfShift;
+	}
+
+	public void setListOfShift(List<Shift> listOfShift) {
+		this.listOfShift = listOfShift;
+	}
+	
+	public void addWokerToShift(Worker w){
+		
+	}
 }
