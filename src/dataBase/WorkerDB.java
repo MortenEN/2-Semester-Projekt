@@ -52,10 +52,16 @@ public class WorkerDB implements WorkerDBIF {
 				changeStatusOut.executeUpdate();
 			}
 		}
-
 		worker = buildObject(rs);
-
 		return worker;
+	}
+	
+	@Override
+	public Worker findWorkerByName(String name) throws SQLException {
+		Worker worker;
+		ResultSet rs;
+		
+		return null;
 	}
 
 	public Worker buildObject(ResultSet rs) throws SQLException {
@@ -128,11 +134,4 @@ public class WorkerDB implements WorkerDBIF {
 		
 		return start;
 	}
-
-	@Override
-	public Worker findWorkerByName(String name) throws SQLException {
-		
-		return null;
-	}
-
 }
