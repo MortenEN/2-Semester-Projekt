@@ -25,10 +25,13 @@ public class WorkerDB implements WorkerDBIF {
 			+ "JOIN shift ON worker.workerid = shift.FK_worker_ID \r\n"
 			+ "WHERE worker.workerid = ? and shift.[end] is null;";
 	private PreparedStatement findActiveShift;
+	private static final String FIND_Worker_By_Name_SQL = "select * from Worker where name LIKE ?"; 
+	private PreparedStatement findWorkerByName;
 
 	public WorkerDB() throws SQLException {
 		con = DBConnection.getInstance().getConnection();
 		findWorkerByWorkerNumber = con.prepareStatement(FIND_Worker_By_Worker_Number_SQL);
+		findWorkerByName = con.prepareStatement(FIND_Worker_By_Name_SQL);
 		changeStatusIn = con.prepareStatement(Change_Work_Status_To_SignedIn_SQL);
 		changeStatusOut = con.prepareStatement(Change_Work_Status_To_SignedOut_SQL);
 		findAllWorkersAtWork = con.prepareStatement(FIND_All_Workers_At_Work_SQL);
@@ -55,13 +58,16 @@ public class WorkerDB implements WorkerDBIF {
 		worker = buildObject(rs);
 		return worker;
 	}
-	
+
 	@Override
 	public Worker findWorkerByName(String name) throws SQLException {
 		Worker worker;
 		ResultSet rs;
-		
-		return null;
+
+		findWorkerByName.setString(1, name + "%");
+		rs = findWorkerByName.executeQuery();
+		worker = buildObject(rs);
+		return worker;
 	}
 
 	public Worker buildObject(ResultSet rs) throws SQLException {
@@ -84,8 +90,6 @@ public class WorkerDB implements WorkerDBIF {
 		} else {
 			atWork = true;
 		}
-		
-		
 
 		Worker foundWorker = new Worker(name, address, phoneNo, cpr, email, workerNumber, atWork);
 		return foundWorker;
@@ -124,14 +128,14 @@ public class WorkerDB implements WorkerDBIF {
 	public String findActiveShift(String login) throws SQLException {
 		String start = "";
 		ResultSet rs;
-		
+
 		findActiveShift.setString(1, login);
 		rs = findActiveShift.executeQuery();
-		
+
 		if(rs.next()) {
 			start = rs.getString("start");
 		}
-		
+
 		return start;
 	}
 }
