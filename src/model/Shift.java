@@ -1,8 +1,15 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Shift {
+	@Override
+	public String toString() {
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+	    return "Shift [start " + start.format(formatter) + ", end " + end.format(formatter) + "]";
+	}
+
 	private LocalDateTime start;
 	private LocalDateTime end;
 	private Worker worker;
