@@ -51,6 +51,7 @@ CREATE TABLE [Shift]
 (ShiftID int identity(1,1) not null,
 [start] datetime not null,
 [end] datetime,
+past_or_future_shift int not null,
 FK_schedule_ID int,
 FK_worker_ID nvarchar(30) not null,
 PRIMARY KEY (shiftID),

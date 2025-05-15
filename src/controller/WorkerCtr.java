@@ -16,10 +16,17 @@ public class WorkerCtr {
 		workerDB = new WorkerDB();
 	}
 
-	public Worker findWorker(String workerNumber) throws SQLException {
+	public Worker findWorkerByWorkerNumber(String workerNumber) throws SQLException {
 		Worker worker;
 
 		worker = workerDB.findWorkerByWorkerNumber(workerNumber);
+		return worker;
+	}
+	
+	public Worker findWorkerByName(String name) throws SQLException {
+		Worker worker;
+		
+		worker = workerDB.findWorkerByName(name);
 		return worker;
 	}
 
@@ -46,4 +53,5 @@ public class WorkerCtr {
 				totalHours.toHours(), 
 				totalHours.toMinutes() % 60);
 	}
+	
 }
