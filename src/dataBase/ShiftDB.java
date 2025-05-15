@@ -21,7 +21,7 @@ public class ShiftDB implements ShiftDBIF {
 	private PreparedStatement update;
 	private static final String FIND_Last_Month_Shifts_By_Worker_Number_SQL = "SELECT * FROM shift WHERE start BETWEEN FORMAT(GETDATE(), \r\n"
 			+ "  'yyyy-MM-01') AND EOMONTH(GETDATE()) \r\n"
-			+ "  AND FK_worker_ID = 010203 and past_or_future_shift = 0;";
+			+ "  AND FK_worker_ID = ? and past_or_future_shift = 0;";
 	private PreparedStatement findLastMonthShiftsByWorkerNumber;
 	
 	public ShiftDB() throws SQLException {
