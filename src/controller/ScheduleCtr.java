@@ -1,20 +1,35 @@
 package controller;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import dataBase.ScheduleDB;
 import dataBase.ScheduleDBIF;
 import dataBase.WorkerDBIF;
 import model.Shift;
 import model.Worker;
+import model.Schedule;
 
 public class ScheduleCtr {
 	private ScheduleDBIF scheduleDB;
 	private ShiftCtr shiftCtr;
 	private WorkerCtr workerCtr;
 	private WorkerDBIF workerDB;
+	private Schedule schedule;
 	
 	public ScheduleCtr() throws SQLException {
-		
+		this.scheduleDB = new ScheduleDB();
+	}
+	
+	public Schedule SelectDate(String name, LocalDate start, LocalDate end) throws SQLException{
+		Schedule schedule = new Schedule(start, end , name);
+		return schedule;
+	}
+	
+	public Shift createShift(LocalDateTime start, LocalDateTime end) throws SQLException {
+		Shift shift = new Shift(start, end, false);
+		return shift;
 	}
 	
 	public Worker findWorkerByName(String name) throws SQLException {
@@ -28,8 +43,12 @@ public class ScheduleCtr {
 		shift.setWorker(worker);
 	}
 	
-	public void saveSchedule() {
+	public void saveSchedule() throws SQLException {
+		if(schedule == null) {
+			throw new IllegalStateException("No schedule to save");
+		}
 		
+		scheduleDB.saveSchedule(schedule);
 	}
 	
 
