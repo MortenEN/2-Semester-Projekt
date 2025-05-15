@@ -20,58 +20,55 @@ public class ScheduleDB implements ScheduleDBIF{
 
 
 	private PreparedStatement create;
-	private static final String create_SQL = "Insert into [Schedule](start, [end], name)"
-			+ "  values (?, ?, ?)";
+	private static final String create_SQL = "Insert into [Schedule](start, [end], name)" + "  values (?, ?, ?)";
 	private PreparedStatement update;
 	private static final String update_SQL = "update [Schedule] set [end] = ? where name = ? and start = ?";
 
 	public ScheduleDB() throws SQLException {
 		con = DBConnection.getInstance().getConnection();
+		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		create = con.prepareStatement(create_SQL);
 		update = con.prepareStatement(update_SQL);
-		getName
-		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 	}
 	public Schedule buildObject(ResultSet rs) {
 		String startString = rs.getString("start");
-		startString = startString.split("\\.")[0];
 		LocalDate start = LocalDate.parse(startString, formatter);
-		
+
 		String endString = rs.getString("end");
 		LocalDate end = null;
-		if(endString != null) {
-		endString = endString.split("\\.")[0];
-		end = LocalDate.parse(endString, formatter);
+		if (endString != null) {
+			end = LocalDate.parse(endString, formatter);
 		}
-		
-		
-		
-		
-		return rs;
+
+		String name = rs.getString("name");
+		return new Schedule(start, end, name);
 	}
+
 
 	@Override
 	public void createScheduleObject(LocalDate start, LocalDate end, String name) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
+
 	}
 
 	@Override
 	public void setShift(Shift shift) {
-		// TODO Auto-generated method stub
-		
+		this.schedule.getListOfShifts().add(shift);
+
 	}
 
 	@Override
 	public void addWorkerToShift(Worker worker) {
-		// TODO Auto-generated method stub
-		
+		for (Shift shift : schedule.getListOfShifts()) {
+			worker.addShift(shift);
+		}
 	}
 
 	@Override
 	public void saveSchedule(Schedule schedule) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
