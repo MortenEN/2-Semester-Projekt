@@ -47,9 +47,13 @@ public class ScheduleDB implements ScheduleDBIF{
 
 
 	@Override
-	public void createScheduleObject(LocalDate start, LocalDate end, String name) throws SQLException {
-
-
+	public Schedule createScheduleObject(LocalDate start, LocalDate end, String name) throws SQLException {
+		create.setString(1, start.format(formatter));
+		create.setString(2, end.format(formatter));
+		create.setString(3, name);
+		
+		create.executeUpdate();
+		return new Schedule(start, end, name);
 	}
 
 	@Override

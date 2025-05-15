@@ -8,7 +8,7 @@ import model.Worker;
 
 public interface ScheduleDBIF {
 	
-	void createScheduleObject(LocalDate start,LocalDate end, String name) throws SQLException;
+	Schedule createScheduleObject(LocalDate start,LocalDate end, String name) throws SQLException;
 	void setShift(Shift shift);
 	void addWorkerToShift(Worker worker);
 	void saveSchedule(Schedule schedule);
