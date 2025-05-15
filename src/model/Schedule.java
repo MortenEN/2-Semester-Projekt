@@ -1,36 +1,59 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 public class Schedule {
-	private LocalDateTime start;
-	private LocalDateTime end;
+	private LocalDate start;
+	private LocalDate end;
 	private String name;
+	private List<Shift> listOfShifts;
 	
-	
-	public void setStart(LocalDateTime start) {
+	public Schedule(LocalDate start, LocalDate end, String name, List<Shift> listOfShifts) {
+		super();
+		this.start = start;
+		this.end = end;
+		this.name = name;
+		this.listOfShifts = listOfShifts;
+	}
+
+	public void addWokerToShift(Worker w){
+
+	}
+
+	//Setters
+	public void setStart(LocalDate start) {
 		this.start = start;
 	}
-	
-	public void setEnd(LocalDateTime end) {
+
+	public void setEnd(LocalDate end) {
 		this.end = end;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	public LocalDateTime getStart() {
+
+	public void setListOfShifts(List<Shift> listOfShifts) {
+		this.listOfShifts = listOfShifts;
+	}
+
+
+	//Getters
+	public LocalDate getStart() {
 		return start;
 	}
 
-	public LocalDateTime getEnd() {
+	public LocalDate getEnd() {
 		return end;
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public List<Shift> getListOfShifts() {
+		return listOfShifts;
 	}
 
 }

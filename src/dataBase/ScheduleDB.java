@@ -2,45 +2,71 @@ package dataBase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.ArrayList;
 
 import model.Schedule;
+import model.Shift;
+import model.Worker;
 
 public class ScheduleDB implements ScheduleDBIF{
 	private Connection con;
+	private Schedule schedule;
 	private DateTimeFormatter formatter;
 
 
 	private PreparedStatement create;
-	private static final String create_SQL = "Insert into [Schedule](start, [end], name)"
-			+ "  values (?, ?, ?)";
+	private static final String create_SQL = "Insert into [Schedule](start, [end], name)" + "  values (?, ?, ?)";
 	private PreparedStatement update;
 	private static final String update_SQL = "update [Schedule] set [end] = ? where name = ? and start = ?";
 
 	public ScheduleDB() throws SQLException {
 		con = DBConnection.getInstance().getConnection();
+		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		create = con.prepareStatement(create_SQL);
 		update = con.prepareStatement(update_SQL);
-		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+	}
+	public Schedule buildObject(ResultSet rs) {
+		String startString = rs.getString("start");
+		LocalDate start = LocalDate.parse(startString, formatter);
+
+		String endString = rs.getString("end");
+		LocalDate end = null;
+		if (endString != null) {
+			end = LocalDate.parse(endString, formatter);
+		}
+
+		String name = rs.getString("name");
+		return new Schedule(start, end, name);
+	}
+
+
+	@Override
+	public void createScheduleObject(LocalDate start, LocalDate end, String name) throws SQLException {
+
+
 	}
 
 	@Override
-	public void addScheduleToDB(LocalDate start, LocalDate end, String name) throws SQLException {
-		// TODO Auto-generated method stub
+	public void setShift(Shift shift) {
+		this.schedule.getListOfShifts().add(shift);
 
 	}
 
 	@Override
-	public List<Schedule> createScheduleObject(String workerNumber) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void addWorkerToShift(Worker worker) {
+		for (Shift shift : schedule.getListOfShifts()) {
+			worker.addShift(shift);
+		}
 	}
 
 	@Override
-	public void updateScheduleInDB(String start, LocalDate end, String name) throws SQLException {
+	public void saveSchedule(Schedule schedule) {
 		// TODO Auto-generated method stub
 
 	}

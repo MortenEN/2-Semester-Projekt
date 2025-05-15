@@ -36,10 +36,10 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class loginWindow extends JFrame {
+public class LoginWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private static loginWindow frame;
+	private static LoginWindow frame;
 	private JPanel contentPane;
 	private WorkerCtr workerCtr;
 	private ShiftCtr shiftCtr;
@@ -55,36 +55,19 @@ public class loginWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new loginWindow();
+					frame = new LoginWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-
-		new Thread(() -> {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				//e.printStackTrace();
-			}
-			while(true) {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// should not happen - we don't interrupt this thread
-					e.printStackTrace();
-				}
-				frame.updateWorkerList();
-			}
-		}).start();
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public loginWindow() {
+	public LoginWindow() {
 		setBackground(new Color(254, 254, 254));
 		setTitle("SignIn");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -289,6 +272,22 @@ public class loginWindow extends JFrame {
 		panel_1.add(listOfWorkers);
 
 		init();
+		
+		new Thread(() -> {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				//e.printStackTrace();
+			}
+			while(true) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				SwingUtilities.invokeLater(() -> updateWorkerList());
+			}
+		}).start();
 	}
 
 	private void init() {
