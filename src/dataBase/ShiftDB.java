@@ -13,16 +13,15 @@ public class ShiftDB implements ShiftDBIF {
 	private Connection con;
 	private DateTimeFormatter formatter;
 	private static final String create_SQL =
-			"Insert into [Shift](start, [end], FK_worker_ID)"
-			+ "  values (?, ?, ?)";
+			"Insert into [Shift](start, [end], FK_worker_ID, past_or_future_shift)"
+			+ "  values (?, ?, ?, ?)";
 	private PreparedStatement create;
 	private static final String update_SQL =
 			"update shift set [end] = ? where FK_worker_ID = ? and start = ?";
 	private PreparedStatement update;
-	private static final String FIND_Last_Month_Shifts_By_Worker_Number_SQL = "SELECT * \r\n"
-			+ "FROM shift \r\n"
-			+ "WHERE start BETWEEN FORMAT(GETDATE(), 'yyyy-MM-01') \r\n"
-			+ "AND EOMONTH(GETDATE()) AND FK_worker_ID = ?;";
+	private static final String FIND_Last_Month_Shifts_By_Worker_Number_SQL = "SELECT * FROM shift WHERE start BETWEEN FORMAT(GETDATE(), \r\n"
+			+ "  'yyyy-MM-01') AND EOMONTH(GETDATE()) \r\n"
+			+ "  AND FK_worker_ID = 010203 and past_or_future_shift = 0;";
 	private PreparedStatement findLastMonthShiftsByWorkerNumber;
 	
 	public ShiftDB() throws SQLException {
@@ -40,6 +39,7 @@ public class ShiftDB implements ShiftDBIF {
 		create.setString(1, formattedDateTime);
 		create.setString(2, null);
 		create.setString(3, workerNumber);
+		create.setInt(4, 0);
 		
 		create.executeUpdate();
 	}
@@ -73,7 +73,15 @@ public class ShiftDB implements ShiftDBIF {
 		end = LocalDateTime.parse(endString, formatter);
 		}
 		
-		Shift foundShift = new Shift(start, end);
+		boolean pastOrFutureShift;
+		int pastFuture = rs.getInt("past_or_future_shift");
+		if(pastFuture == 0) {
+			pastOrFutureShift = true;
+		} else {
+			pastOrFutureShift = false;
+		}
+		
+		Shift foundShift = new Shift(start, end, pastOrFutureShift);
 		return foundShift;
 	}
 
