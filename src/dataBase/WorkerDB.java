@@ -61,12 +61,15 @@ public class WorkerDB implements WorkerDBIF {
 
 	@Override
 	public Worker findWorkerByName(String name) throws SQLException {
-		Worker worker;
+		Worker worker = null;
 		ResultSet rs;
 
 		findWorkerByName.setString(1, name + "%");
 		rs = findWorkerByName.executeQuery();
-		worker = buildObject(rs);
+		
+		if(rs.next()) {
+			worker = buildObject(rs);
+		}
 		return worker;
 	}
 

@@ -7,18 +7,18 @@ import java.time.LocalDateTime;
 import dataBase.ScheduleDB;
 import dataBase.ScheduleDBIF;
 import dataBase.WorkerDBIF;
+import dataBase.WorkerDB;
 import model.Shift;
 import model.Worker;
 import model.Schedule;
 
 public class ScheduleCtr {
 	private ScheduleDBIF scheduleDB;
-	private ShiftCtr shiftCtr;
-	private WorkerCtr workerCtr;
 	private WorkerDBIF workerDB;
 	
 	public ScheduleCtr() throws SQLException {
 		this.scheduleDB = new ScheduleDB();
+		this.workerDB = new WorkerDB();
 	}
 	
 	public Schedule SelectDate(String name, LocalDate start, LocalDate end) throws SQLException{

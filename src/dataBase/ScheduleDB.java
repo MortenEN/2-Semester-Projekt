@@ -24,12 +24,14 @@ public class ScheduleDB implements ScheduleDBIF {
 	private PreparedStatement update;
 	private static final String update_SQL = "update [Schedule] set [end] = ? where name = ? and start = ?";
 	private PreparedStatement checkExists;
+	private static final String checkExists_SQL = "SELECT COUNT(*) AS total FROM [Schedule] WHERE name = ? AND start = ?";
 
 	public ScheduleDB() throws SQLException {
 		con = DBConnection.getInstance().getConnection();
 		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		create = con.prepareStatement(create_SQL);
 		update = con.prepareStatement(update_SQL);
+		checkExists = con.prepareStatement(checkExists_SQL);
 
 	}
 	public Schedule buildObject(ResultSet rs) throws SQLException {
