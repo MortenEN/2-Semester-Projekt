@@ -50,5 +50,9 @@ public class ScheduleCtr {
 		scheduleDB.saveSchedule(schedule);
 	}
 	
+	public boolean scheduleExists(Schedule schedule) throws SQLException {
+	    return ((ScheduleDB) scheduleDB).scheduleExists(schedule);
+	}
+	
 
 }

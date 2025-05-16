@@ -77,8 +77,9 @@ public class ScheduleDB implements ScheduleDBIF {
 		try {
 			if (!scheduleExists(schedule)) { //Tjekker om schedule findes med samme navn og start dato
 				createScheduleObject(schedule.getStart(), schedule.getEnd(), schedule.getName()); //hvis den ikke gør, kalder den createScheduleObject og gemmer 
+				System.out.println("Alt lykkedes! Schedule gemt med shift og worker.");
 			} else {
-				System.out.println("Schedule findes allerede – gemmer ikke igen.");
+				System.out.println("Schedule findes allerede – Gemmer ikke igen.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace(); 

@@ -20,8 +20,9 @@ public class TryMe {
 			// 2. Opret et schedule
 			LocalDate startDate = LocalDate.of(2025, 5, 19);
 			LocalDate endDate = LocalDate.of(2025, 5, 25);
-			String scheduleName = "Uge 21";
+			String scheduleName = "Uge 31";
 			Schedule schedule = scheduleCtr.SelectDate(scheduleName, startDate, endDate);
+			
 
 			// 3. Opret et shift (vagt)
 			LocalDateTime shiftStart = LocalDateTime.of(2025, 5, 20, 8, 0);
@@ -44,7 +45,6 @@ public class TryMe {
 			// 7. Gem schedule i databasen
 			scheduleCtr.saveSchedule(schedule);
 
-			System.out.println("Alt lykkedes! Schedule gemt med shift og worker.");
 
 		} catch (SQLException e) {
 			System.out.println("Databasefejl: " + e.getMessage());
