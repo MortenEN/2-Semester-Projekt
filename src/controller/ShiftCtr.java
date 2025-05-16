@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import dataBase.DBConnection;
 import dataBase.ShiftDB;
 import dataBase.ShiftDBIF;
 import model.Shift;
@@ -28,11 +29,42 @@ public class ShiftCtr {
 	}
 	
 	public void addShiftToDB(LocalDateTime now, String workerNumber) throws SQLException {
+		DBConnection db = DBConnection.getInstance();
+		
+		try {
+		db.startTransaction(); //Starter Transcation
+		
 		shiftDB.addShiftToDB(now, workerNumber);
+		db.commitTransaction(); //Hvis Transcation lykkes committer den
+
+		} catch (Exception e) {
+			try {
+				db.rollbackTransaction(); //Hvis noget skulle fejle laver den rollback call
+			} catch (SQLException ex) {
+				ex.printStackTrace(); //Udskriver fejl
+			}
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void updateShiftInDB(String start, LocalDateTime end, String workerNumber) throws SQLException {
-		shiftDB.updateShiftInDB(start, end, workerNumber);
+		DBConnection db = DBConnection.getInstance();
+		
+		try {
+			db.startTransaction(); //Starter Transcation
+			
+			shiftDB.updateShiftInDB(start, end, workerNumber);
+			db.commitTransaction(); //Hvis Transcation lykkes committer den
+
+		} catch (Exception e) {
+			try {
+				db.rollbackTransaction(); //Hvis noget skulle fejle laver den et rollback call
+			} catch (SQLException ex) {
+				ex.printStackTrace(); //Udskriver fejl
+			}
+			e.printStackTrace();
+		}
 	}
 
 }
