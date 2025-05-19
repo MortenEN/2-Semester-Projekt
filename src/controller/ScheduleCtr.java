@@ -24,7 +24,7 @@ import model.Schedule;
 public class ScheduleCtr {
 	//Fields
 	private ScheduleDBIF scheduleDB;
-	private WorkerDBIF workerDB;
+	private WorkerCtr workerCtr;
 	
 	/**
 	 * Constructor that initializes database interface for schedule and worker 
@@ -34,7 +34,7 @@ public class ScheduleCtr {
 	
 	public ScheduleCtr() throws SQLException {
 		this.scheduleDB = new ScheduleDB();
-		this.workerDB = new WorkerDB();
+		this.workerCtr = new WorkerCtr();
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class ScheduleCtr {
 	public Worker findWorkerByName(String name) throws SQLException {
 		Worker worker;
 		
-		worker = workerDB.findWorkerByName(name);
+		worker = workerCtr.findWorkerByName(name);
 		return worker;
 	}
 	
