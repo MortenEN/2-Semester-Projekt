@@ -157,13 +157,13 @@ public class ScheduleDB implements ScheduleDBIF {
 	 * 
 	 * @param schedule the Schedule object containing the updated end date.
 	 */
-	public void updateSchedule(Schedule schedule) { //???????????????
+	public void updateSchedule(Schedule schedule) { 
 		try {
-			update.setString(1, schedule.getEnd() != null ? schedule.getEnd().format(formatter) : null); //Sætter værdien til schedule.getEnd hvis det ikke er null ellers indsætter vi null. EKS hvis end = 2025-05-15 bliver det til 2025-05-15
-			update.setString(2, schedule.getName()); //Den matcher "name" f.eks uge 20.
-			update.setString(3, schedule.getStart().format(formatter)); //Matcher "AND start = ?" som i vores SQL
+			update.setString(1, schedule.getEnd() != null ? schedule.getEnd().format(formatter) : null);
+			update.setString(2, schedule.getName()); 
+			update.setString(3, schedule.getStart().format(formatter));
 
-			update.executeUpdate(); //Kører SQL kommandoen
+			update.executeUpdate();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -172,5 +172,3 @@ public class ScheduleDB implements ScheduleDBIF {
 	}
 
 }
-
-

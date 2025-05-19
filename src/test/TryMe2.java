@@ -8,38 +8,38 @@ import model.Schedule;
 
 public class TryMe2 {
 
-    public static void main(String[] args) {
-        try {
-            // Opret forbindelse til ScheduleDB
-            ScheduleDB scheduleDB = new ScheduleDB();
+	public static void main(String[] args) {
+		try {
 
-            // Opret start og slutdato
-            LocalDate start = LocalDate.of(2025, 6, 1);
-            LocalDate end = LocalDate.of(2025, 6, 30);
-            String name = "Uge 21";
+			ScheduleDB scheduleDB = new ScheduleDB();
 
-            // Lav en ny schedule-instans
-            Schedule newSchedule = new Schedule(start, end, name);
 
-            // Gem schedule (hvis den ikke allerede findes)
-            scheduleDB.saveSchedule(newSchedule);
-            System.out.println("Schedule forsøgt gemt.");
+			LocalDate start = LocalDate.of(2025, 6, 1);
+			LocalDate end = LocalDate.of(2025, 6, 30);
+			String name = "Uge 21";
 
-            // Tjek om den eksisterer
-            boolean exists = scheduleDB.scheduleExists(newSchedule);
-            System.out.println("Schedule eksisterer: " + exists);
 
-            // Opdater slutdato (ændr fx til 28. juni)
-            newSchedule.setEnd(LocalDate.of(2025, 6, 28));
-            scheduleDB.updateSchedule(newSchedule);
-            System.out.println("Schedule opdateret med ny slutdato.");
+			Schedule newSchedule = new Schedule(start, end, name);
 
-        } catch (SQLException e) {
-            System.err.println("Der opstod en SQL-fejl:");
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("Der opstod en uventet fejl:");
-            e.printStackTrace();
-        }
-    }
+
+			scheduleDB.saveSchedule(newSchedule);
+			System.out.println("Schedule forsøgt gemt.");
+
+
+			boolean exists = scheduleDB.scheduleExists(newSchedule);
+			System.out.println("Schedule eksisterer: " + exists);
+
+
+			newSchedule.setEnd(LocalDate.of(2025, 6, 28));
+			scheduleDB.updateSchedule(newSchedule);
+			System.out.println("Schedule opdateret med ny slutdato.");
+
+		} catch (SQLException e) {
+			System.err.println("Der opstod en SQL-fejl:");
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println("Der opstod en uventet fejl:");
+			e.printStackTrace();
+		}
+	}
 }

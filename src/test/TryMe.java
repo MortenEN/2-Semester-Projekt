@@ -14,35 +14,35 @@ public class TryMe {
 		try {
 
 
-			// 1. Lav en controller
+
 			ScheduleCtr scheduleCtr = new ScheduleCtr();
 
-			// 2. Opret et schedule
+
 			LocalDate startDate = LocalDate.of(2025, 5, 19);
 			LocalDate endDate = LocalDate.of(2025, 5, 25);
 			String scheduleName = "Uge 31";
 			Schedule schedule = scheduleCtr.SelectDate(scheduleName, startDate, endDate);
-			
 
-			// 3. Opret et shift (vagt)
+
+
 			LocalDateTime shiftStart = LocalDateTime.of(2025, 5, 20, 8, 0);
 			LocalDateTime shiftEnd = LocalDateTime.of(2025, 5, 20, 16, 0);
 			Shift shift = scheduleCtr.createShift(shiftStart, shiftEnd);
 
-			// 4. Find en worker (forudsætter at navnet findes i databasen)
+
 			Worker worker = scheduleCtr.findWorkerByName("Mikkel");
 			if(worker == null) {
 				System.out.println("Worker With the name Sofie was not found!");
 				return;
 			}
 
-			// 5. Tilknyt worker til shift
+
 			scheduleCtr.addWorkerToShift(worker, shift);
 
-			// 6. Tilføj shift til schedule (hvis du har setShift-metoden)
-			schedule.getListOfShifts().add(shift); // direkte adgang, alternativt scheduleDB.setShift(shift);
 
-			// 7. Gem schedule i databasen
+			schedule.getListOfShifts().add(shift);
+
+
 			scheduleCtr.saveSchedule(schedule);
 
 
