@@ -4,11 +4,26 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Schedule class is responsible for maintaining and managing a collection of shifts.
+ * 
+ * @author gruppe 2
+ * @version 23-05-2025
+ */
+
 public class Schedule {
+	//Fields
 	private LocalDate start;
 	private LocalDate end;
 	private String name;
 	private List<Shift> listOfShifts;
+	
+	/**
+	 * Constructor for schedule
+	 * @param start, the start date of the schedule
+	 * @param end, the end date of the schedule
+	 * @param name, the name of the schedule
+	 */
 	
 	public Schedule(LocalDate start, LocalDate end, String name) {
 		super();
@@ -17,6 +32,11 @@ public class Schedule {
 		this.name = name;
 		this.listOfShifts = new ArrayList<>();
 	}
+	
+	/**
+	 * Adds a Shift to the schedule's list of shifts
+	 * @param s the shift to be added
+	 */
 
 	public void addShiftToSchedule(Shift s){
 		listOfShifts.add(s);

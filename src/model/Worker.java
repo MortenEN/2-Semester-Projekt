@@ -3,6 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Worker class represents an employee and contains their personal information,
+ * contact details, and their associated list of shifts.
+ * 
+ * @author gruppe 2
+ * @version 23-05-2025
+ */
+
 public class Worker {
 	private String name;
 	private String address;
@@ -12,19 +20,34 @@ public class Worker {
 	private String workerNumber;
 	private boolean atWork;
 	private List<Shift> listOfShifts;
-	//HUSK CPR
+
+	/**
+	 * Constructor for Worker
+	 * @param name of the worker
+	 * @param address of the worker
+	 * @param phoneNo of the worker
+	 * @param cpr of the worker
+	 * @param email of the worker
+	 * @param workerNumber of the worker
+	 * @param atWork true or false
+	 */
 
 	public Worker(String name, String address, String phoneNo, String cpr, String email, String workerNumber, boolean atWork) {
 		this.name = name;
 		this.address = address;
 		this.phoneNo = phoneNo;
-		this.setCpr(cpr);
+		this.setCpr(cpr); 
 		this.email = email;
 		this.workerNumber = workerNumber;
 		this.atWork = atWork;
 		listOfShifts = new ArrayList<>();
 	}
-	
+
+	/**
+	 * Adds a shift to the workers shift list
+	 * @param s the shift to bed added
+	 */
+
 	public void addShift(Shift s) {
 		listOfShifts.add(s);
 	}
