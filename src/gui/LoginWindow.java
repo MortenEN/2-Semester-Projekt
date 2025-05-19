@@ -44,14 +44,13 @@ public class LoginWindow extends JFrame {
 	private WorkerCtr workerCtr;
 	private ShiftCtr shiftCtr;
 	private JList<String> listOfWorkers;
-	private static String login;
+	private String login;
 	private JLabel lblDate;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		login = "";
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -274,11 +273,6 @@ public class LoginWindow extends JFrame {
 		init();
 		
 		new Thread(() -> {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				//e.printStackTrace();
-			}
 			while(true) {
 				try {
 					Thread.sleep(1000);
@@ -291,6 +285,7 @@ public class LoginWindow extends JFrame {
 	}
 
 	private void init() {
+		login = "";
 		try {
 			workerCtr = new WorkerCtr();
 			shiftCtr = new ShiftCtr();

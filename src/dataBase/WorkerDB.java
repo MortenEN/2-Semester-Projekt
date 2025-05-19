@@ -95,6 +95,7 @@ public class WorkerDB implements WorkerDBIF {
 		}
 
 		Worker foundWorker = new Worker(name, address, phoneNo, cpr, email, workerNumber, atWork);
+		
 		return foundWorker;
 	}
 
