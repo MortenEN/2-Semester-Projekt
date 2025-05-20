@@ -64,9 +64,9 @@ public class StartWindow extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblRegisterHours = new JLabel("Register Hours");
@@ -114,12 +114,33 @@ public class StartWindow extends JFrame {
 		gbc_btnEnterMakeSchedule.gridy = 3;
 		panel.add(btnEnterMakeSchedule, gbc_btnEnterMakeSchedule);
 		
+		JLabel lblViewSchdule = new JLabel("View Schedule");
+		lblViewSchdule.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblViewSchdule = new GridBagConstraints();
+		gbc_lblViewSchdule.insets = new Insets(0, 0, 5, 5);
+		gbc_lblViewSchdule.gridx = 0;
+		gbc_lblViewSchdule.gridy = 5;
+		panel.add(lblViewSchdule, gbc_lblViewSchdule);
+		
+		JButton btnEnterViewSchedule = new JButton("Open Window");
+		btnEnterViewSchedule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showInternalMessageDialog(null, "Use Case not made yet");
+			}
+		});
+		btnEnterViewSchedule.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnEnterViewSchedule = new GridBagConstraints();
+		gbc_btnEnterViewSchedule.insets = new Insets(0, 0, 5, 0);
+		gbc_btnEnterViewSchedule.gridx = 1;
+		gbc_btnEnterViewSchedule.gridy = 5;
+		panel.add(btnEnterViewSchedule, gbc_btnEnterViewSchedule);
+		
 		JLabel lblCrudAvailability = new JLabel("CRUD Availability");
 		lblCrudAvailability.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblCrudAvailability = new GridBagConstraints();
 		gbc_lblCrudAvailability.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCrudAvailability.gridx = 0;
-		gbc_lblCrudAvailability.gridy = 5;
+		gbc_lblCrudAvailability.gridy = 7;
 		panel.add(lblCrudAvailability, gbc_lblCrudAvailability);
 		
 		JButton btnEnterCrudAvailability = new JButton("Open Window");
@@ -132,7 +153,7 @@ public class StartWindow extends JFrame {
 		GridBagConstraints gbc_btnEnterCrudAvailability = new GridBagConstraints();
 		gbc_btnEnterCrudAvailability.insets = new Insets(0, 0, 5, 0);
 		gbc_btnEnterCrudAvailability.gridx = 1;
-		gbc_btnEnterCrudAvailability.gridy = 5;
+		gbc_btnEnterCrudAvailability.gridy = 7;
 		panel.add(btnEnterCrudAvailability, gbc_btnEnterCrudAvailability);
 		
 		JLabel lblCrudBulletin = new JLabel("CRUD Bulletin");
@@ -140,7 +161,7 @@ public class StartWindow extends JFrame {
 		GridBagConstraints gbc_lblCrudBulletin = new GridBagConstraints();
 		gbc_lblCrudBulletin.insets = new Insets(0, 0, 0, 5);
 		gbc_lblCrudBulletin.gridx = 0;
-		gbc_lblCrudBulletin.gridy = 7;
+		gbc_lblCrudBulletin.gridy = 9;
 		panel.add(lblCrudBulletin, gbc_lblCrudBulletin);
 		
 		JButton btnEnterCrudBulletin = new JButton("Open window");
@@ -152,7 +173,7 @@ public class StartWindow extends JFrame {
 		btnEnterCrudBulletin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnEnterCrudBulletin = new GridBagConstraints();
 		gbc_btnEnterCrudBulletin.gridx = 1;
-		gbc_btnEnterCrudBulletin.gridy = 7;
+		gbc_btnEnterCrudBulletin.gridy = 9;
 		panel.add(btnEnterCrudBulletin, gbc_btnEnterCrudBulletin);
 	}
 
