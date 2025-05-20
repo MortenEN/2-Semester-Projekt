@@ -10,7 +10,7 @@ import org.junit.Test;
 import model.Worker;
 import model.Shift;
 
-public class addWorkerToShift {
+public class addWorkerToShiftTest {
 	
 	private Worker worker;
 	private Shift shift;
