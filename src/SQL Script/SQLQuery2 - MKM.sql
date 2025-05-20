@@ -76,9 +76,6 @@ FK_post_ID int not null
 PRIMARY KEY (bulletinID)
 FOREIGN KEY (FK_post_ID) references Post(postID));
 
-ALTER TABLE Worker
-ADD FOREIGN KEY (FK_post_ID) references Post(postID);
-
 Insert into country (country)
 values ('Danmark')
 
