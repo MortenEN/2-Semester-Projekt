@@ -119,7 +119,7 @@ public class ScheduleDB implements ScheduleDBIF {
 	 * @param schedule the Schedule object to be saved.
 	 */
 	@Override
-	public void saveSchedule(Schedule schedule) { //Tror ikke den er lavet rigtigt
+	public void saveSchedule(Schedule schedule) { 
 		try {
 			if (!scheduleExists(schedule)) { //Tjekker om schedule findes med samme navn og start dato
 				createScheduleObject(schedule.getStart(), schedule.getEnd(), schedule.getName()); //hvis den ikke gør, kalder den createScheduleObject og gemmer 
