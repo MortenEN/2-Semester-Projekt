@@ -14,9 +14,9 @@ import model.Worker;
  * 
  * It provides methods for inserting new shift records, updating shift end times,
  * and retrieving recent shifts for a specific worker. It also transforms 
- * database records into {@link Shift} objects.
+ * database records into Shift objects.
  * 
- * This class implements the {@link ShiftDBIF} interface.
+ * This class implements the ShiftDBIF interface.
  * 
  * The class uses prepared SQL statements for efficient and secure interaction
  * with the underlying database.
@@ -56,7 +56,7 @@ public class ShiftDB implements ShiftDBIF {
 	 * Adds a new shift entry to the database.
 	 * 
 	 * The new shift will have a start time and will initially have no end time.
-	 * It is marked as a future shift (`past_or_future_shift = 0`).
+	 * It is marked as a future shift
 	 * 
 	 * @param now the start time of the shift.
 	 * @param workerNumber the worker's unique identifier.
@@ -75,9 +75,9 @@ public class ShiftDB implements ShiftDBIF {
 	}
 
 	/**
-	 * Retrieves a list of {@link Shift} objects for a worker from the current month.
+	 * Retrieves a list of Shift objects for a worker from the current month.
 	 * 
-	 * Only shifts marked as "past" (i.e., {@code past_or_future_shift = 0}) are included.
+	 * Only shifts marked as "past" are included.
 	 * 
 	 * @param workerNumber the worker's unique identifier.
 	 * @return a list of Shift objects for the current month.
